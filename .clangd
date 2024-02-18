@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: -I/System/Volumes/Data/opt/homebrew/Cellar/criterion/2.4.2/include
