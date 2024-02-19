@@ -3,6 +3,8 @@
 instruction getInstruction(unsigned char inputByte) {
   instruction calculatedInstruction;
 
+  calculatedInstruction.inputByte = inputByte;
+
   if ((inputByte & 0700) < 0300 && (inputByte & 0070) == 0000 &&
       (inputByte & 0007) > 0002)
     calculatedInstruction.operation = ADD_INST;

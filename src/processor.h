@@ -7,6 +7,7 @@
 #define A_REG 0000
 #define B_REG 0001
 #define X_REG 0002
+#define P_REG 0003
 #define OUTPUT_REG 0200
 #define AFLAG_REG 0201
 #define BFLAG_REG 0202
@@ -42,6 +43,7 @@
 #define NOOP_INST 0x14
 
 typedef struct Instruction {
+  unsigned char inputByte;
   unsigned char operation;
 } instruction;
 

@@ -565,3 +565,9 @@ Test(TestProcessor, EnsureGetNoopInstruction) {
   cr_expect(getInstruction(0370).operation == NOOP_INST,
             "Ensure 0370 is an NOOP_INST");
 }
+
+Test(TestProcessor, EnsureGetInputByteOnInstruction) {
+  cr_expect(getInstruction(0123).inputByte == 0123,
+            "Ensure getInstruction return the inputByte in the Instruction "
+            "structure");
+}
