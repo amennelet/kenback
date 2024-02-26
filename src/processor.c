@@ -61,3 +61,34 @@ instruction getInstruction(unsigned char inputByte) {
 
   return calculatedInstruction;
 }
+
+enum Registry getRegistryAddressFromInstruction(instruction inst) {
+  if (inst.operation == ADD_INST || inst.operation == SUB_INST ||
+      inst.operation == LOAD_INST || inst.operation == STORE_INST ||
+      inst.operation == JPI_INST || inst.operation == JPD_INST ||
+      inst.operation == JMI_INST || inst.operation == JMD_INST) {
+    if ((inst.inputByte & 0700) == 0000)
+      return A;
+    if ((inst.inputByte & 0700) == 0100)
+      return B;
+    if ((inst.inputByte & 0700) == 0200)
+      return X;
+  }
+  if (inst.operation == RSHIFT_INST || inst.operation == LSHIFT_INST ||
+      inst.operation == RROTATE_INST || inst.operation == LROTATE_INST) {
+    if ((inst.inputByte & 0040) == 0000)
+      return A;
+    if ((inst.inputByte & 0040) == 0040)
+      return B;
+  }
+  return None;
+}
+
+void processAdd(instruction inst) {
+  /* TODO
+   * get the registry to process
+   * get the addressing mode
+   *
+   * process the operation
+   */
+}

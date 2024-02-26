@@ -1,3 +1,4 @@
+#include "../src/memory.h"
 #include "../src/processor.h"
 #include <criterion/criterion.h>
 
@@ -570,4 +571,32 @@ Test(TestProcessor, EnsureGetInputByteOnInstruction) {
   cr_expect(getInstruction(0123).inputByte == 0123,
             "Ensure getInstruction return the inputByte in the Instruction "
             "structure");
+}
+
+Test(TestProcessor, EnsureProcessAdd) {
+  /*
+   * void processAdd(instruction inst);
+   */
+  init(KENBACK_MEMORY_SIZE);
+}
+
+Test(TestProcessor, EnsureGetRegistry) {
+  instruction inst = getInstruction(0003);
+  cr_expect(getRegistryAddressFromInstruction(inst) == A,
+            "Ensure 0003 return A registry");
+  inst = getInstruction(0103);
+  cr_expect(getRegistryAddressFromInstruction(inst) == B,
+            "Ensure 0103 return B registry");
+  inst = getInstruction(0203);
+  cr_expect(getRegistryAddressFromInstruction(inst) == X,
+            "Ensure 0203 return X registry");
+  inst = getInstruction(0303);
+  cr_expect(getRegistryAddressFromInstruction(inst) == None,
+            "Ensure 0303 return None registry");
+  inst = getInstruction(0001);
+  cr_expect(getRegistryAddressFromInstruction(inst) == A,
+            "Ensure 0001 return A registry");
+  inst = getInstruction(0041);
+  cr_expect(getRegistryAddressFromInstruction(inst) == B,
+            "Ensure 0041 return B registry");
 }

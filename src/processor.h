@@ -42,6 +42,8 @@
 #define HALT_INST 0x13
 #define NOOP_INST 0x14
 
+enum Registry { None, A, B, X };
+
 typedef struct Instruction {
   unsigned char inputByte;
   unsigned char operation;
@@ -52,5 +54,13 @@ typedef struct Instruction {
  * return an instruction from a byte
  */
 instruction getInstruction(unsigned char inputByte);
+
+/* getRegistryFromInstruction
+ */
+enum Registry getRegistryAddressFromInstruction(instruction inst);
+
+/* processAdd
+ */
+void processAdd(instruction inst);
 
 #endif // PROCESSOR_H
