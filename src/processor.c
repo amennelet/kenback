@@ -61,3 +61,7 @@ instruction getInstruction(unsigned char inputByte) {
 
   return calculatedInstruction;
 }
+
+unsigned char getNextInstruction(MEMORY_INTERFACE memory) {
+  return memory.read(memory.read(P_REG));
+}

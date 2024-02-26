@@ -1,7 +1,7 @@
 #ifndef PROCESSOR_H
 #define PROCESSOR_H
 
-#include "memory.h"
+#include "memory_interface.h"
 
 /* Addresses */
 #define A_REG 0000
@@ -52,5 +52,7 @@ typedef struct Instruction {
  * return an instruction from a byte
  */
 instruction getInstruction(unsigned char inputByte);
+
+unsigned char getNextInstruction(MEMORY_INTERFACE memory);
 
 #endif // PROCESSOR_H

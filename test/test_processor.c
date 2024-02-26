@@ -571,3 +571,22 @@ Test(TestProcessor, EnsureGetInputByteOnInstruction) {
             "Ensure getInstruction return the inputByte in the Instruction "
             "structure");
 }
+
+unsigned int pRegisterAddress = 0003; // P_REG
+unsigned char nextIstructionAddress = 0010;
+unsigned char nextInstructionValue = 0200; // NOOP
+unsigned char readNextInstruction(unsigned int address) {
+  if (address == pRegisterAddress)
+    return nextIstructionAddress;
+  if (address == nextIstructionAddress)
+    return nextInstructionValue;
+  return 0;
+}
+
+Test(TestProcessor, EnsureGetextInstruction) {
+  // unsigned char getNextInstruction(MEMORY_INTERFACE memory);
+  MEMORY_INTERFACE memory;
+  memory.read = readNextInstruction;
+  cr_expect(getNextInstruction(memory) == 0200,
+            "Ensure getNextInstruction return 0200");
+}
