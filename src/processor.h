@@ -42,6 +42,8 @@
 #define HALT_INST 0x13
 #define NOOP_INST 0x14
 
+enum Registry { None, A, B, X };
+
 typedef struct Instruction {
   unsigned char inputByte;
   unsigned char operation;

@@ -1,3 +1,4 @@
+#include "../src/memory.h"
 #include "../src/processor.h"
 #include <criterion/criterion.h>
 
